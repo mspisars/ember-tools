@@ -14,12 +14,16 @@ exports.classify = function(str) {
  * users/update_avatar -> UsersUpdateAvatar
  */
 
-exports.objectify /*lol*/ = function (str) { 
+exports.objectify = function (str) { 
   str = str.replace(/\//g, '_');
   return exports.classify(str);
 };
 
 exports.humanize = function(str) {
   return fleck.capitalize(fleck.underscore(str).replace(/_/g, ' '));
+};
+
+exports.templatize = function(str) {
+  return fleck.underscore(str.replace(/\./g, '__'));
 };
 

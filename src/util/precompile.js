@@ -29,7 +29,7 @@ function getTemplates(source, callback) {
   walker.on('file', function(dir, stats, next) {
     if (stats.name.charAt(0) !== '.') {
       var path = dir + '/' + stats.name;
-      var name = path.replace(/(\.handlebars|\.hbs)$/, '').replace(source + '/', '');
+      var name = path.replace(/(\.handlebars|\.hbs)$/, '').replace(source + '/', '').replace(/__/g, "/");
       templates.push({
         name: name,
         content: fs.readFileSync(path).toString()
